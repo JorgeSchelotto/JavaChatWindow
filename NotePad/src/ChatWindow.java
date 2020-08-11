@@ -1,6 +1,6 @@
 import ar.com.EduIt.Notepad.Ventana.Window;
 
-public class Notepad {
+public class ChatWindow {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
