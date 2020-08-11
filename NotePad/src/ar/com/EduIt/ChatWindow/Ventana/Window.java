@@ -21,7 +21,7 @@ public class Window extends JFrame {
 	
 	private Container contentPane;
 	private JButton btnEnviar;
-	private JTextField txtTexto;
+	private JTextField txtText;
 	private JLabel lblEnviar;
 	private JTextArea jtaChat;
 	private JScrollPane scrollPane;
@@ -41,14 +41,14 @@ public class Window extends JFrame {
 			// Components settings
 			btnEnviar = new JButton("ENVIAR");
 			lblEnviar = new JLabel("Mensaje: ");
-			txtTexto = new JTextField();
-			txtTexto.setPreferredSize(new Dimension(400,30));
+			txtText = new JTextField();
+			txtText.setPreferredSize(new Dimension(400,30));
 			jtaChat = new JTextArea();
 			jtaChat.setEnabled(false);
 			scrollPane = new JScrollPane(jtaChat);
-			pnlNoth = new JPanel(new FlowLayout()); // Acomoda por defecto uno al lado del otro
+			pnlNoth = new JPanel(new FlowLayout()); // Set for default the position of the components next to each other.
 			pnlNoth.add(lblEnviar);
-			pnlNoth.add(txtTexto);
+			pnlNoth.add(txtText);
 			pnlNoth.add(btnEnviar);
 			
 			
@@ -58,28 +58,46 @@ public class Window extends JFrame {
 			contentPane.add(pnlNoth, BorderLayout.SOUTH);
 			
 			// Functionality
-			BtnEnviarActionListener actionListener = new BtnEnviarActionListener();
+			// BtnEnviarActionListener actionListener = new BtnEnviarActionListener();
+			// btnEnviar.addActionListener(actionListener);
+			// txtText.addActionListener(actionListener);
+			
+			
+			// Anonymous Inner class. I´m doing this just because the simplicity of this program.
+			ActionListener actionListener = new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					String text = txtText.getText(); // Obtain data
+					jtaChat.append("Mensaje de usuario: " + text + "\n"); // Write the text
+					txtText.setText(""); // Clean the panel
+					
+				}
+			};
+			
 			btnEnviar.addActionListener(actionListener);
-			txtTexto.addActionListener(actionListener);
+			txtText.addActionListener(actionListener);
 			
 				
 			
 		}
 		
 		
-		// Inner class. I´m doing this just because the simplicity of this program.
+		/* Another example:
+		 * // Inner class. I´m doing this just because the simplicity of this program.
 		private class BtnEnviarActionListener implements ActionListener {
 			
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String text = txtTexto.getText(); // Obtain data
+				String text = txtText.getText(); // Obtain data
 				jtaChat.append("Mensaje de usuario: " + text + "\n"); // Write the text
-				txtTexto.setText(""); // Clean the panel
+				txtText.setText(""); // Clean the panel
 				
 			}
 			
 		}
+		*/
 
 
 }
