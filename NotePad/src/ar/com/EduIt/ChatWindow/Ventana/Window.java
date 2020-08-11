@@ -1,9 +1,10 @@
-package ar.com.EduIt.Notepad.Ventana;
-
+package ar.com.EduIt.ChatWindow.Ventana;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.AbstractDocument.Content;
+
 
 
 public class Window extends JFrame {
@@ -42,6 +44,7 @@ public class Window extends JFrame {
 			txtTexto = new JTextField();
 			txtTexto.setPreferredSize(new Dimension(400,30));
 			jtaChat = new JTextArea();
+			jtaChat.setEnabled(false);
 			scrollPane = new JScrollPane(jtaChat);
 			pnlNoth = new JPanel(new FlowLayout()); // Acomoda por defecto uno al lado del otro
 			pnlNoth.add(lblEnviar);
@@ -54,6 +57,29 @@ public class Window extends JFrame {
 			contentPane.add(scrollPane, BorderLayout.CENTER);
 			contentPane.add(pnlNoth, BorderLayout.SOUTH);
 			
+			// Functionality
+			BtnEnviarActionListener actionListener = new BtnEnviarActionListener();
+			btnEnviar.addActionListener(actionListener);
+			txtTexto.addActionListener(actionListener);
+			
+				
 			
 		}
+		
+		
+		// Inner class. I´m doing this just because the simplicity of this program.
+		private class BtnEnviarActionListener implements ActionListener {
+			
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String text = txtTexto.getText(); // Obtain data
+				jtaChat.append("Mensaje de usuario: " + text + "\n"); // Write the text
+				txtTexto.setText(""); // Clean the panel
+				
+			}
+			
+		}
+
+
 }

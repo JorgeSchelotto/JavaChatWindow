@@ -1,4 +1,12 @@
-import ar.com.EduIt.Notepad.Ventana.Window;
+import ar.com.EduIt.ChatWindow.Ventana.Window;
+
+/*
+ * 
+ * Author: Jorge Schelotto
+ *
+*/
+
+
 
 public class ChatWindow {
 

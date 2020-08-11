@@ -1,4 +1,4 @@
-package ar.com.EduIt.Notepad.Ventana;
+package ar.com.EduIt.ChatWindow.Ventana;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
